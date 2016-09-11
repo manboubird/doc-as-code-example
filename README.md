@@ -11,12 +11,13 @@ A CI/CD example of documentation management as  Infrastructura-as-code
 
 # Setup
 
-
 ```
 # pyenv 
 pyenv install 3.4.3
 pyenv virtualenv 3.4.3 py34.doc-as-code
 pyenv local py34.doc-as-code
+
+pip install -r requirements/prd.txt
 
 # initiallize submodule
 git submodule update
@@ -28,5 +29,14 @@ git submodule update
 ```
 # Add a documentation project as git submodule 
 git submodule add https://github.com/manboubird/sphinx-doc-example.git ./docs/sphinx-doc-example
+
+```
+
+Mkdocs document project creation
+
+```
+mkdocs new docs/mkdocs-example
+cd docs/mkdocs-example
+mkdocs serve
 
 ```

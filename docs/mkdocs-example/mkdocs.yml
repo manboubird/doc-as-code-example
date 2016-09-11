@@ -1,1 +1,16 @@
-site_name: My Docs
+site_name: Mkdocs example
+site_description: Mkdocs example project
+site_author: manboubird
+
+repo_url: https://github.com/manboubird/doc-as-code-example
+repo_name: doc-as-code-example
+
+docs_dir: docs
+theme: readthedocs
+extra_css: [_static/css/extra.css]
+
+pages:
+    - Home: index.md
+    - Project:
+        - Change log: project/changelog.md
+

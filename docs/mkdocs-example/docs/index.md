@@ -1,4 +1,4 @@
-# Welcome to MkDocs
+# Welcome to MkDocs Example 
 
 For full documentation visit [mkdocs.org](http://mkdocs.org).
 
@@ -15,3 +15,9 @@ For full documentation visit [mkdocs.org](http://mkdocs.org).
     docs/
         index.md  # The documentation homepage.
         ...       # Other markdown pages, images and other files.
+
+## References
+
+* Notable MkDocs based documentations
+    *  [linkedin/gobblin](https://github.com/linkedin/gobblin/tree/master/gobblin-docs)
+
