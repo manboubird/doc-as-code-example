@@ -1,0 +1,46 @@
+#!/bin/bash
+set -eu
+
+SCRIPT_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
+export LIB_DIR="${SCRIPT_DIR}/../libs"
+
+source "${LIB_DIR}/sh/common-functions.sh"
+
+WORKSPACE=${WORKSPACE:-$(pwd)}
+DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/mkdocs-example"}
+BUMPVERSION_PART=${BUMPVERSION_PART:-"major"}
+
+bumpversion_mkdocs() {
+  local part="$1"
+  echo "Executing bumpversion ..."
+  echo bumpversion --list --verbose "${part}"
+  bumpversion --list --verbose "${part}"
+  log "Push bumpversion commit ..."
+  git push origin
+  log "Push new tags created by bumpversion ..."
+  git push origin --tags
+}
+
+bumpversion_sphinx_doc() {
+  echo Not implemented yet
+}
+
+bump_version() {
+  cd "${DOC_ROOT}"
+  if [ -f "mkdocs.yml" ]; then
+    log "Bump version of mkdocs project ..."
+    bumpversion_mkdocs "${BUMPVERSION_PART}"
+  elif [ -f "Makefile" ]; then
+    log "Bump version of sphinx doc project ..."
+    bumpversion_sphinx_doc "${BUMPVERSION_PART}"
+  else
+    die "Cannot file mkdoc.yml or Makefile. DOC_ROOT = ${DOC_ROOT}"
+  fi
+}
+
+main() {
+  bump_version
+}
+
+main
+
