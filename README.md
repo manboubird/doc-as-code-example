@@ -33,7 +33,6 @@ git submodule add https://github.com/manboubird/sphinx-doc-example.git ./docs/sp
 ```
 
 Mkdocs document project creation
-
 ```
 mkdocs new docs/mkdocs-example
 cd docs/mkdocs-example
@@ -48,4 +47,26 @@ mkdocs serve
 mkdocs build
 python -m http.server
 open http://localhost:8000/site
+```
+
+Sphinx document project creation
+```
+sphinx-quickstart docs/sphinx-example
+cd docs/sphinx-example
+
+# Insert live editing into Makefile
+cat <<EOF >> Makefile
+
+livehtml:
+	sphinx-autobuild -b html \$(ALLSPHINXOPTS) \$(BUILDDIR)/html
+	@echo
+	@echo "live html editing finished."
+EOF
+# start live edting
+make livehtml
+
+# build documentation and confirm build html with http server
+make html
+python -m http.server
+open http://localhost:8000/_build/html
 ```

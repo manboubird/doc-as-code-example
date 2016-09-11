@@ -9,6 +9,7 @@ source "${LIB_DIR}/sh/deploy-functions.sh"
 
 WORKSPACE=${WORKSPACE:-$(pwd)}
 DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/mkdocs-example"}
+# DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/sphinx-doc-example/sphinx-doc-base"}
 
 build() {
   local output_dir="$1"
@@ -18,9 +19,9 @@ build() {
     build_mkdocs "${DOC_ROOT}" "${output_dir}"
   elif [ -f "${DOC_ROOT}/Makefile" ]; then
     log "Building sphinx doc project ..."
-    make -C "${DOC_ROOT}" html
+    build_sphinx_doc "${DOC_ROOT}" "${output_dir}"
   else
-    die "Cannot file mkdoc.yml or Makefile."
+    die "Cannot file mkdoc.yml or Makefile. DOC_ROOT = ${DOC_ROOT}"
   fi
 }
 
