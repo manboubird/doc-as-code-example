@@ -70,3 +70,10 @@ make html
 python -m http.server
 open http://localhost:8000/_build/html
 ```
+
+Bump version
+```
+# list bump-version without any update
+bumpversion --dry-run --allow-dirty --list major
+```
+
