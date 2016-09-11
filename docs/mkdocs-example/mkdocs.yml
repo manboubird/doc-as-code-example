@@ -10,7 +10,7 @@ theme: readthedocs
 extra_css: [_static/css/extra.css]
 
 extra:
-    version: 5
+    version: 6
 
 pages:
     - Home: index.md
