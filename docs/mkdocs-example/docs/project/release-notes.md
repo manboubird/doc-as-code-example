@@ -1,5 +1,9 @@
 # Release Notes
 
+## Version 4 (2016-09-11)
+
+* bumpvesion test
+
 ## Version 3 (2016-09-11)
 
 * bumpvesion test
