@@ -37,6 +37,15 @@ Mkdocs document project creation
 ```
 mkdocs new docs/mkdocs-example
 cd docs/mkdocs-example
+
+# live editing
 mkdocs serve
 
+# live editing
+mkdocs serve
+
+# build documentation and confirm build html with http server
+mkdocs build
+python -m http.server
+open http://localhost:8000/site
 ```

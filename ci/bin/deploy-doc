@@ -1,0 +1,34 @@
+#!/bin/bash
+set -eu
+
+SCRIPT_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
+export LIB_DIR="${SCRIPT_DIR}/../libs"
+
+source "${LIB_DIR}/sh/common-functions.sh"
+source "${LIB_DIR}/sh/deploy-functions.sh"
+
+WORKSPACE=${WORKSPACE:-$(pwd)}
+DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/mkdocs-example"}
+
+build() {
+  local output_dir="$1"
+  mkdir -p "${output_dir}" 
+  if [ -f "${DOC_ROOT}/mkdocs.yml" ]; then
+    log "Building mkdocs project ..."
+    build_mkdocs "${DOC_ROOT}" "${output_dir}"
+  elif [ -f "${DOC_ROOT}/Makefile" ]; then
+    log "Building sphinx doc project ..."
+    make -C "${DOC_ROOT}" html
+  else
+    die "Cannot file mkdoc.yml or Makefile."
+  fi
+}
+
+main() {
+  local output_dir="${WORKSPACE}/build"
+  build "${output_dir}"
+  rsync_uplaod
+}
+
+main
+
