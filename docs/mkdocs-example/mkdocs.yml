@@ -12,5 +12,5 @@ extra_css: [_static/css/extra.css]
 pages:
     - Home: index.md
     - Project:
-        - Change log: project/changelog.md
+        - Release Notes: project/release-notes.md
 
