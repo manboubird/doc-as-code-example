@@ -75,5 +75,30 @@ Bump version
 ```
 # list bump-version without any update
 bumpversion --dry-run --allow-dirty --list major
+
+# bump major version
+bumpversion --allow-dirty --list major
+
+#
+# Bumpveion with commit and tag creation options.
+# commit and tag configuraitons should be True in .bumpversion.cfg
+#
+
+# update release notes for preparing bumping version
+vim release-note-file
+
+# commit the release note 
+git add release-note-file
+git ci -m "prep. for bumpversion"
+
+# bumpversion with commit and tag creation
+bumpversion --list major
+
+# push bumpversion commit
+git push origin
+
+# push new tags created by bumpversion
+git push origin --tags
+
 ```
 
