@@ -1,0 +1,31 @@
+#!/bin/bash
+set -eu
+
+SCRIPT_DIR="$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)"
+export LIB_DIR="${SCRIPT_DIR}/../libs"
+
+source "${LIB_DIR}/sh/common-functions.sh"
+
+WORKSPACE=${WORKSPACE:-$(pwd)}
+# DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/mkdocs-example"}
+DOC_ROOT=${DOC_ROOT:-"${WORKSPACE}/docs/sphinx-doc-example"}
+BUMPVERSION_PART=${BUMPVERSION_PART:-"major"}
+
+bump_version() {
+  local part="$1"
+  echo "Executing bumpversion ..."
+  echo bumpversion --list --verbose "${part}"
+  bumpversion --list --verbose "${part}"
+  log "Push bumpversion commit ..."
+  git push origin
+  log "Push new tags created by bumpversion ..."
+  git push origin --tags
+}
+
+main() {
+  cd "${DOC_ROOT}"
+  bump_version "${BUMPVERSION_PART}"
+}
+
+main
+
