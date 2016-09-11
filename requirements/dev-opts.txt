@@ -1,0 +1,2 @@
+rstcheck==2.0
+https://github.com/Rykka/instant-rst.py/archive/master.zip

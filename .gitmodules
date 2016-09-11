@@ -1,0 +1,3 @@
+[submodule "docs/sphinx-doc-example"]
+	path = docs/sphinx-doc-example
+	url = https://github.com/manboubird/sphinx-doc-example.git

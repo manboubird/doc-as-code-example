@@ -1,0 +1,2 @@
+-r prd.txt
+sphinx-autobuild==0.6.0
