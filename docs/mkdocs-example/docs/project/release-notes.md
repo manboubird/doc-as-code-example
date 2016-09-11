@@ -1,5 +1,9 @@
 # Release Notes
 
+## Version XXX (YYYY-MM-DD)
+
+* TBA
+
 ## Version 5 (2016-09-11)
 
 * bumpvesion test
