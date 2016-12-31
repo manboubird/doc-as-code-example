@@ -2,7 +2,7 @@
 #
 # based on the script below:
 # https://github.com/adithyakhamithkar/ansible-playbooks/blob/master/roles/jenkins-configure/templates/install-jenkins-plugin.sh.j2
-
+#
 set -eu
 
 if [ $# -eq 0 ]; then
