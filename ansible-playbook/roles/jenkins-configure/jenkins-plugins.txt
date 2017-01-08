@@ -15,3 +15,8 @@ monitoring
 build-history-metrics-plugin
 copyartifact
 dynamicparameter
+jquery-ui
+jquery
+simple-theme-plugin
+text-finder
+log-parser

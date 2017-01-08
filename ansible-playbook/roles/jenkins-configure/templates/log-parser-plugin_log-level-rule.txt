@@ -1,0 +1,5 @@
+# match line starting with 'error ', case-insensitive
+error /ERROR /
+
+# list of warnings here...
+warning /WARNING /
